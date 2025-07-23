@@ -2,15 +2,21 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="MEC System S.r.l. - Lavorazioni meccaniche di precisione, tornitura e fresatura CNC. Qualità, flessibilità e tempi di consegna ottimizzati." />
     <meta name="keywords" content="lavorazioni meccaniche, tornitura, fresatura, CNC, precisione, Urbania, Pesaro" />
     <title>MEC System S.r.l. - Lavorazioni Meccaniche di Precisione</title>
-    <script type="module" crossorigin src="assets/index-BOLRG5tP.js"></script>
+        <script>
+      if (location.pathname.startsWith('/mecsystem/')) {
+        const newPath = location.pathname.replace('/mecsystem','') || '/';
+        history.replaceState(null, '', newPath + location.search + location.hash);
+      }
+    </script>
+<script type="module" crossorigin src="assets/index-BOLRG5tP.js"></script>
     <link rel="stylesheet" crossorigin href="assets/index-DaCn7aLi.css">
   </head>
   <body>
     <div id="root"></div>
   </body>
 </html>
-
