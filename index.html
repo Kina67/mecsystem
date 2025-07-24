@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEC System S.r.l. - Lavorazioni Meccaniche di Precisione</title>
+    <meta name="description" content="MEC System S.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura, garantendo elevata flessibilità e tempi di consegna ottimizzati.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #dee2e6 50%, #ced4da 75%, #adb5bd 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Sfondo metallizzato per sezioni specifiche */
+        .metallic-bg {
+            background: linear-gradient(135deg, 
+                #f8f9fa 0%, 
+                #e9ecef 15%, 
+                #dee2e6 30%, 
+                #ced4da 45%, 
+                #adb5bd 60%, 
+                #868e96 75%, 
+                #6c757d 90%, 
+                #495057 100%
+            );
+            background-size: 400% 400%;
+            animation: metallicShine 8s ease-in-out infinite;
+        }
+
+        @keyframes metallicShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Header */
+        .header {
+            background: #1e40af;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            background: #2563eb;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.3s;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .cta-button {
+            background: #ea580c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #dc2626;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #1e40af;
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: #f97316;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: #ea580c;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1e40af;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+        }
+
+        .about p {
+            margin-bottom: 1.5rem;
+            color: #6b7280;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: #374151;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Productions Section */
+        .productions {
+            padding: 4rem 0;
+        }
+
+        .productions h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .productions-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .productions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .production-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .production-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .production-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .production-card-content {
+            padding: 1.5rem;
+        }
+
+        .production-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .production-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .production-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide sections initially for navigation */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        #home.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">MEC SYSTEM</div>
+            <nav class="nav">
+                <a href="#" onclick="showSection('home')">Home</a>
+                <a href="#" onclick="showSection('servizi')">Servizi</a>
+                <a href="#" onclick="showSection('produzioni')">Produzioni</a>
+                <a href="#" onclick="showSection('certificazioni')">Certificazioni</a>
+                <a href="#" onclick="showSection('testimonianze')">Testimonianze</a>
+                <a href="#" onclick="showSection('blog')">Blog</a>
+                <a href="#" onclick="showSection('contatti')">Contatti</a>
+            </nav>
+            <a href="#" onclick="showSection('contatti')" class="cta-button">Richiedi Preventivo</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <div id="home" class="page-section active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div>
+                            <h1>Lavorazioni<br>Meccaniche<br>di <span class="highlight">Precisione</span></h1>
+                            <p>Mec System è specializzata nelle lavorazioni meccaniche di tornitura e fresatura, garantendo elevata flessibilità e tempi di consegna ottimizzati per ogni progetto.</p>
+                            <div class="hero-buttons">
+                                <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri i Nostri Servizi</a>
+                                <a href="#" onclick="showSection('contatti')" class="btn-secondary">Richiedi Preventivo</a>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="Ic6aROPFkRSx.jpg" alt="Lavorazioni meccaniche di precisione">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">27</div>
+                            <div class="stat-label">Dipendenti</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2953</div>
+                            <div class="stat-label">Metri Quadrati</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Strutture</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div>
+                            <h2>La Nostra Passione, La Vostra Eccellenza</h2>
+                            <p>Mec System è un'azienda leader nella produzione di pezzi meccanici e nell'assemblaggio di gruppi complessi, mettendo al vostro servizio competenza, innovazione e un approccio focalizzato al problem solving.</p>
+                            <ul class="features-list">
+                                <li>Lavorazioni su piccola, media e grande serie</li>
+                                <li>Precisione su pezzi di ogni dimensione</li>
+                                <li>Tempi di consegna ottimizzati</li>
+                                <li>Standard di qualità elevati</li>
+                            </ul>
+                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri i Nostri Servizi</a>
+                        </div>
+                        <div class="about-image">
+                            <img src="FzvepxjMAYMD.jpg" alt="Officina meccanica">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Preview -->
+            <section class="services">
+                <div class="container">
+                    <h2>I Nostri Servizi</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <img src="Ivtsq9jbtiZD.jpg" alt="Tornitura">
+                            <h3>Tornitura</h3>
+                            <p>Lavorazioni di tornitura di precisione per componenti di ogni dimensione</p>
+                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="rMnROmM8ykrN.jpg" alt="Fresatura">
+                            <h3>Fresatura</h3>
+                            <p>Fresatura CNC avanzata per progetti complessi e di alta precisione</p>
+                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                        </div>
+                        <div class="service-card">
+                            <img src="1iOAuZVuK7If.jpg" alt="Montaggio">
+                            <h3>Montaggio</h3>
+                            <p>Assemblaggio di gruppi complessi con la massima attenzione ai dettagli</p>
+                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Servizi Section -->
+        <div id="servizi" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>I Nostri Servizi</h1>
+                    <p>Offriamo una gamma completa di lavorazioni meccaniche di precisione per soddisfare ogni esigenza industriale.</p>
+                </div>
+            </section>
+
+            <section class="services">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <img src="Ivtsq9jbtiZD.jpg" alt="Tornitura">
+                            <h3>Tornitura Personalizzata</h3>
+                            <p>Grazie alla nostra esperienza nella tornitura, possiamo creare pezzi su misura con la massima precisione.</p>
+                            <ul style="text-align: left; margin: 1rem 0;">
+                                <li>Tornitura CNC</li>
+                                <li>Tornitura di minuterie</li>
+                                <li>Pezzi di piccole e grandi dimensioni</li>
+                                <li>Tolleranze strette</li>
+                            </ul>
+                        </div>
+                        <div class="service-card">
+                            <img src="rMnROmM8ykrN.jpg" alt="Fresatura">
+                            <h3>Fresatura Su Misura</h3>
+                            <p>La nostra capacità di fresatura ci permette di realizzare componenti personalizzati con dettagli impeccabili.</p>
+                            <ul style="text-align: left; margin: 1rem 0;">
+                                <li>Fresatura CNC</li>
+                                <li>Lavorazioni complesse</li>
+                                <li>Materiali metallici e plastici</li>
+                                <li>Finiture di precisione</li>
+                            </ul>
+                        </div>
+                        <div class="service-card">
+                            <img src="1iOAuZVuK7If.jpg" alt="Montaggio">
+                            <h3>Montaggio Personalizzato</h3>
+                            <p>Offriamo servizi di montaggio su misura per garantire che i tuoi componenti siano pronti all'uso.</p>
+                            <ul style="text-align: left; margin: 1rem 0;">
+                                <li>Assemblaggio gruppi complessi</li>
+                                <li>Controllo qualità</li>
+                                <li>Test funzionali</li>
+                                <li>Documentazione tecnica</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div>
+                            <h2>Progetti Complessi e Intricati</h2>
+                            <p>La nostra esperienza ci permette di gestire progetti di ogni complessità, dalla progettazione alla realizzazione finale.</p>
+                            <ul class="features-list">
+                                <li>Gestione di progetti complessi e intricati</li>
+                                <li>Consulenza tecnica specializzata</li>
+                                <li>Prototipazione rapida</li>
+                                <li>Supporto nella fase di progettazione</li>
+                                <li>Ottimizzazione dei processi produttivi</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <img src="ThYeIAIrDFup.jpg" alt="Progetti complessi">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Produzioni Section -->
+        <div id="produzioni" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>Le Nostre <span class="highlight">Produzioni</span></h1>
+                    <p>La nostra gamma di produzioni spazia dall'ingegneria meccanica di precisione alle lavorazioni specializzate su misura, soddisfacendo una vasta gamma di esigenze industriali.</p>
+                </div>
+            </section>
+
+            <section class="productions">
+                <div class="container">
+                    <h2>Impegno Costante per la Qualità</h2>
+                    <p class="productions-subtitle">Ogni pezzo che esce dalla nostra officina è il risultato di un impegno costante per la qualità, la precisione e l'innovazione. Lavoriamo con i più alti standard tecnologici per garantire risultati eccezionali in ogni progetto.</p>
+                    
+                    <div class="productions-grid">
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9038.png" alt="Componenti Meccanici">
+                                <div class="production-badge">Tornitura</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Componenti Meccanici di Precisione</h3>
+                                <p>Componenti torniti di alta precisione per applicazioni industriali</p>
+                            </div>
+                        </div>
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9059.png" alt="Pezzi Fresati">
+                                <div class="production-badge">Fresatura</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Pezzi Fresati Complessi</h3>
+                                <p>Lavorazioni di fresatura per geometrie complesse</p>
+                            </div>
+                        </div>
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9064.png" alt="Assemblaggio Gruppi">
+                                <div class="production-badge">Montaggio</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Assemblaggio Gruppi</h3>
+                                <p>Assemblaggio di gruppi meccanici completi</p>
+                            </div>
+                        </div>
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9071.png" alt="Minuterie">
+                                <div class="production-badge">Tornitura</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Minuterie di Precisione</h3>
+                                <p>Piccoli componenti con tolleranze strette</p>
+                            </div>
+                        </div>
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9074.png" alt="Componenti Industriali">
+                                <div class="production-badge">Fresatura</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Componenti Industriali</h3>
+                                <p>Componenti per macchinari industriali</p>
+                            </div>
+                        </div>
+                        <div class="production-card">
+                            <div style="position: relative;">
+                                <img src="IMG_9075.png" alt="Pezzi Speciali">
+                                <div class="production-badge">Tornitura</div>
+                            </div>
+                            <div class="production-card-content">
+                                <h3>Pezzi Speciali</h3>
+                                <p>Lavorazioni speciali su richiesta del cliente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-content" style="margin-top: 4rem;">
+                        <div>
+                            <h2>Capacità Produttive</h2>
+                            <p>Mec System è in grado di garantire lavorazioni su piccola, media e grande serie, indipendentemente dalle dimensioni dei componenti.</p>
+                            <ul class="features-list">
+                                <li>Lavorazioni su piccola serie (1-100 pezzi)</li>
+                                <li>Produzioni di media serie (100-1000 pezzi)</li>
+                                <li>Grande serie (oltre 1000 pezzi)</li>
+                                <li>Componenti di piccole e grandi dimensioni</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <img src="FzvepxjMAYMD.jpg" alt="Capacità produttive">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Certificazioni Section -->
+        <div id="certificazioni" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>Certificazioni e <span class="highlight">Qualità</span></h1>
+                    <p>La qualità è al centro di tutto ciò che facciamo. I nostri processi sono certificati e rispettano i più alti standard internazionali.</p>
+                </div>
+            </section>
+
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div>
+                            <h2>I Nostri Principi di Qualità</h2>
+                            <p>Ogni processo produttivo è guidato da principi di qualità che garantiscono risultati eccellenti e la soddisfazione del cliente.</p>
+                            <ul class="features-list">
+                                <li>Controllo qualità in ogni fase</li>
+                                <li>Certificazioni internazionali</li>
+                                <li>Miglioramento continuo</li>
+                                <li>Tracciabilità completa</li>
+                                <li>Test e verifiche costanti</li>
+                            </ul>
+                            <a href="#" onclick="showSection('contatti')" class="btn-primary">Richiedi Informazioni</a>
+                        </div>
+                        <div class="about-image">
+                            <img src="usySg2lTSvRS.jpg" alt="Controllo qualità">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-image">
+                            <img src="2d0aFMJ33xCs.jpg" alt="Standard di qualità">
+                        </div>
+                        <div>
+                            <h2>Standard di Qualità Internazionali</h2>
+                            <p>Rispettiamo e superiamo gli standard di qualità più rigorosi del settore, garantendo prodotti che soddisfano le aspettative più elevate.</p>
+                            <ul class="features-list">
+                                <li>Conformità alle normative ISO</li>
+                                <li>Controlli dimensionali accurati</li>
+                                <li>Documentazione completa</li>
+                                <li>Audit interni regolari</li>
+                                <li>Formazione continua del personale</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Testimonianze Section -->
+        <div id="testimonianze" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>Testimonianze <span class="highlight">Clienti</span></h1>
+                    <p>La soddisfazione dei nostri clienti è la nostra priorità. Ecco cosa dicono di noi.</p>
+                </div>
+            </section>
+
+            <section class="services">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>★★★★★</h3>
+                            <p>"Mec System ha superato le nostre aspettative. La qualità dei componenti è eccezionale e i tempi di consegna sempre rispettati."</p>
+                            <strong>- Marco Rossi, Direttore Tecnico</strong>
+                        </div>
+                        <div class="service-card">
+                            <h3>★★★★★</h3>
+                            <p>"Professionalità e competenza tecnica di alto livello. Consigliano sempre le soluzioni migliori per le nostre esigenze."</p>
+                            <strong>- Laura Bianchi, Responsabile Acquisti</strong>
+                        </div>
+                        <div class="service-card">
+                            <h3>★★★★★</h3>
+                            <p>"Collaboriamo da anni con Mec System. La loro affidabilità e precisione sono incomparabili nel settore."</p>
+                            <strong>- Giuseppe Verdi, Ingegnere</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div>
+                            <h2>Progetti di Successo</h2>
+                            <p>Ogni progetto completato rappresenta una storia di successo condivisa con i nostri clienti.</p>
+                            <ul class="features-list">
+                                <li>Oltre 1000 progetti completati</li>
+                                <li>Clienti soddisfatti in tutta Italia</li>
+                                <li>Collaborazioni a lungo termine</li>
+                                <li>Soluzioni personalizzate</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <img src="yDsIziypkkhj.jpg" alt="Progetti di successo">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Blog Section -->
+        <div id="blog" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>Blog <span class="highlight">Tecnico</span></h1>
+                    <p>Approfondimenti, novità e tendenze nel mondo delle lavorazioni meccaniche di precisione.</p>
+                </div>
+            </section>
+
+            <section class="services">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <img src="3eD4NyxDpc47.jpg" alt="Innovazioni CNC">
+                            <h3>Le Ultime Innovazioni nella Tornitura CNC</h3>
+                            <p>Scopri come le nuove tecnologie stanno rivoluzionando il settore della tornitura di precisione...</p>
+                            <small>15 Gennaio 2024 • 5 min di lettura</small>
+                        </div>
+                        <div class="service-card">
+                            <img src="mxbOkm4fOzeR.jpg" alt="Fresatura Precisione">
+                            <h3>Fresatura di Precisione: Tecniche e Best Practices</h3>
+                            <p>Una guida completa alle tecniche di fresatura più avanzate, con consigli pratici...</p>
+                            <small>8 Gennaio 2024 • 7 min di lettura</small>
+                        </div>
+                        <div class="service-card">
+                            <img src="RQGzL31Jnmzy.jpg" alt="Case Study Automotive">
+                            <h3>Case Study: Progetto Automotive di Successo</h3>
+                            <p>Analisi dettagliata di un progetto complesso nel settore automotive...</p>
+                            <small>2 Gennaio 2024 • 6 min di lettura</small>
+                        </div>
+                        <div class="service-card">
+                            <img src="5O6CpIasEiQs.png" alt="Industria 4.0">
+                            <h3>Industria 4.0: Il Futuro delle Lavorazioni</h3>
+                            <p>Come l'Industria 4.0 sta trasformando il settore delle lavorazioni meccaniche...</p>
+                            <small>28 Dicembre 2023 • 8 min di lettura</small>
+                        </div>
+                        <div class="service-card">
+                            <img src="usySg2lTSvRS.jpg" alt="Controllo Qualità">
+                            <h3>Controllo Qualità: Standard e Certificazioni</h3>
+                            <p>L'importanza del controllo qualità nelle lavorazioni meccaniche...</p>
+                            <small>20 Dicembre 2023 • 4 min di lettura</small>
+                        </div>
+                        <div class="service-card">
+                            <img src="ThYeIAIrDFup.jpg" alt="Materiali Innovativi">
+                            <h3>Materiali Innovativi per Lavorazioni di Precisione</h3>
+                            <p>Esplorazione dei nuovi materiali utilizzati nelle lavorazioni meccaniche...</p>
+                            <small>15 Dicembre 2023 • 6 min di lettura</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contatti Section -->
+        <div id="contatti" class="page-section">
+            <section class="hero">
+                <div class="container">
+                    <h1>Contatti</h1>
+                    <p>Siamo qui per rispondere alle tue domande e discutere le tue esigenze di lavorazione meccanica.</p>
+                </div>
+            </section>
+
+            <section class="about section">
+                <div class="container">
+                    <div class="about-content">
+                        <div>
+                            <h2>Informazioni di Contatto</h2>
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: #1e40af; margin-bottom: 0.5rem;">📞 Telefono</h3>
+                                <p>0722 317961</p>
+                            </div>
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: #1e40af; margin-bottom: 0.5rem;">✉️ Email</h3>
+                                <p>info@mecsystemsrl.it</p>
+                            </div>
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: #1e40af; margin-bottom: 0.5rem;">📍 Indirizzo</h3>
+                                <p>Zona Industriale San Giovanni<br>
+                                Loc. San Giorgio, 41/A<br>
+                                61049 URBANIA (PU)</p>
+                            </div>
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: #1e40af; margin-bottom: 0.5rem;">🕒 Orari di Lavoro</h3>
+                                <p>Lunedì - Venerdì: 8:00 - 17:00<br>
+                                Sabato: Su appuntamento</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h2>Richiedi un Preventivo</h2>
+                            <form style="background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Nome *</label>
+                                    <input type="text" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem;">
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email *</label>
+                                    <input type="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem;">
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Telefono</label>
+                                    <input type="tel" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem;">
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Tipo di Lavorazione</label>
+                                    <select style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem;">
+                                        <option>Seleziona...</option>
+                                        <option>Tornitura</option>
+                                        <option>Fresatura</option>
+                                        <option>Montaggio</option>
+                                        <option>Progetto Complesso</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Descrizione del Progetto *</label>
+                                    <textarea required rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.25rem; resize: vertical;"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Invia Richiesta</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="services">
+                <div class="container">
+                    <h2>Domande Frequenti</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h3>Quali materiali lavorate?</h3>
+                            <p>Lavoriamo acciaio, alluminio, ottone, bronzo e materiali plastici tecnici, adattandoci alle specifiche esigenze del progetto.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Quali sono i tempi di consegna?</h3>
+                            <p>I tempi variano in base alla complessità del progetto. Per lavorazioni standard: 5-10 giorni lavorativi.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Offrite servizi di progettazione?</h3>
+                            <p>Sì, il nostro team tecnico può supportarvi nella progettazione e ottimizzazione dei vostri componenti.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Lavorate per piccole quantità?</h3>
+                            <p>Certamente! Gestiamo progetti dalla singola unità alle grandi serie, mantenendo sempre alta la qualità.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Fornite certificazioni di qualità?</h3>
+                            <p>Ogni lavorazione è accompagnata da certificazione di qualità e controllo dimensionale completo.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Come richiedere un preventivo?</h3>
+                            <p>Potete contattarci via email, telefono o compilare il modulo. Inviateci i disegni tecnici per un preventivo preciso.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1rem;">MEC SYSTEM</div>
+                    <p>Mec System s.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura e garantisce elevata flessibilità in grado di ridurre al minimo i tempi di consegna a cliente.</p>
+                    <p style="font-size: 0.875rem; margin-top: 1rem;">Società soggetta a direzione e coordinamento da parte di M + S S.r.l.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" onclick="showSection('servizi')">Servizi</a></li>
+                        <li><a href="#" onclick="showSection('produzioni')">Produzioni</a></li>
+                        <li><a href="#" onclick="showSection('certificazioni')">Certificazioni</a></li>
+                        <li><a href="#" onclick="showSection('contatti')">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Servizi</h3>
+                    <ul>
+                        <li>Tornitura CNC</li>
+                        <li>Fresatura</li>
+                        <li>Tornitura di Minuterie</li>
+                        <li>Montaggio</li>
+                        <li>Progetti Complessi</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contatti</h3>
+                    <p>📞 0722 317961</p>
+                    <p>✉️ info@mecsystemsrl.it</p>
+                    <p>📍 Zona Industriale San Giovanni<br>
+                    Loc. San Giorgio, 41/A<br>
+                    61049 URBANIA (PU)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Mecsystem srl. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Grazie per la tua richiesta! Ti contatteremo presto.');
+        });
+
+        // Initialize with home section
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
+
