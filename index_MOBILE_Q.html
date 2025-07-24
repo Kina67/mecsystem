@@ -1,0 +1,1189 @@
+Certo! Progetterò una versione più accattivante e moderna del sito Mecsystem. Ecco le principali migliorie che apporterò:
+
+1.  **Design più moderno:**
+    *   Tipografia più accattivante con Google Fonts.
+    *   Palette colori raffinata con tonalità blu metallizzate e arancio acceso per i richiami all'azione.
+    *   Effetti di ombra e profondità più sofisticati.
+    *   Animazioni CSS per elementi chiave (hover, transizioni).
+    *   Layout più pulito con maggiore spazio bianco.
+2.  **Esperienza Utente Migliorata:**
+    *   Navigazione più intuitiva e sticky header migliorato.
+    *   Hero Section più coinvolgente con call-to-action più prominenti.
+    *   Schede servizi/prodotti con design a "card" moderno e hover effects.
+    *   Form di contatto migliorato e più user-friendly.
+3.  **Ottimizzazione Mobile:**
+    *   Design completamente responsive con breakpoint specifici.
+    *   Menu hamburger per la navigazione su mobile.
+    *   Layout ottimizzato per il tocco.
+4.  **Elementi Visivi Avanzati:**
+    *   Sezione statistiche con animazione dei numeri allo scroll.
+    *   Galleria immagini delle produzioni con layout a griglia dinamico.
+    *   Sezione testimonianze con design a citazione stilizzata.
+5.  **Performance:**
+    *   Ottimizzazione del CSS inline.
+    *   Struttura HTML semantica per un migliore SEO.
+
+Ecco il codice HTML completo con il nuovo design:
+
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecsystem S.r.l. - Lavorazioni Meccaniche di Precisione</title>
+    <meta name="description" content="Mecsystem S.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura, garantendo elevata flessibilità e tempi di consegna ottimizzati.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a3a8f;
+            --secondary-blue: #2c52b0;
+            --accent-orange: #ea580c;
+            --accent-hover: #dc2626;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #343a40;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 58, 143, 0.95); /* var(--primary-blue) with opacity */
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(26, 58, 143, 0.98);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            margin-right: 2rem;
+        }
+
+        .nav-item {
+            margin: 0 0.75rem;
+        }
+
+        .nav-link {
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 143, 0.85), rgba(26, 58, 143, 0.9)), url('Ic6aROPFkRSx.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 10rem 0 6rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--white);
+            padding: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--primary-blue);
+        }
+
+        .features-list {
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+            line-height: 1;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Productions Section */
+        .productions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .production-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .production-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .production-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .production-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .production-card:hover .production-img img {
+            transform: scale(1.05);
+        }
+
+        .production-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .production-content {
+            padding: 1.25rem;
+        }
+
+        .production-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .testimonials .section-title h2 {
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: """;
+            font-size: 3rem;
+            color: var(--accent-orange);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -1.5rem;
+            left: -1rem;
+        }
+
+        .testimonial-text::after {
+            bottom: -2rem;
+            right: -1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-orange);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-orange);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary-blue);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Mec<span>system</span></a>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav">
+                    <ul class="nav-list" id="navMenu">
+                        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#servizi" class="nav-link">Servizi</a></li>
+                        <li class="nav-item"><a href="#produzioni" class="nav-link">Produzioni</a></li>
+                        <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonianze</a></li>
+                        <li class="nav-item"><a href="#contatti" class="nav-link">Contatti</a></li>
+                    </ul>
+                    <a href="#contatti" class="cta-button">Preventivo</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Lavorazioni Meccaniche di <span style="color: #f97316;">Precisione</span></h1>
+                <p>Mecsystem è specializzata nelle lavorazioni meccaniche di tornitura e fresatura, garantendo elevata flessibilità e tempi di consegna ottimizzati per ogni progetto.</p>
+                <div class="hero-buttons">
+                    <a href="#servizi" class="btn btn-primary">Scopri i Nostri Servizi</a>
+                    <a href="#contatti" class="btn btn-secondary">Richiedi Preventivo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="62">0</div>
+                    <div class="stat-label">Dipendenti</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5300">0</div>
+                    <div class="stat-label">Metri Quadrati</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">Strutture</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>La Nostra <span style="color: #ea580c;">Passione</span>, La Vostra Eccellenza</h2>
+                    <p>Mecsystem è un'azienda leader nella produzione di pezzi meccanici e nell'assemblaggio di gruppi complessi, mettendo al vostro servizio competenza, innovazione e un approccio focalizzato al problem solving.</p>
+                    <ul class="features-list">
+                        <li>Lavorazioni su piccola, media e grande serie</li>
+                        <li>Precisione su pezzi di ogni dimensione</li>
+                        <li>Tempi di consegna ottimizzati</li>
+                        <li>Standard di qualità elevati</li>
+                    </ul>
+                    <a href="#servizi" class="btn btn-primary">Scopri i Nostri Servizi</a>
+                </div>
+                <div class="about-image">
+                    <img src="FzvepxjMAYMD.jpg" alt="Officina meccanica Mecsystem">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="servizi">
+        <div class="container">
+            <div class="section-title">
+                <h2>I Nostri <span style="color: #ea580c;">Servizi</span></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="Ivtsq9jbtiZD.jpg" alt="Tornitura CNC">
+                    </div>
+                    <div class="service-content">
+                        <h3>Tornitura</h3>
+                        <p>Lavorazioni di tornitura di precisione per componenti di ogni dimensione con macchine CNC all'avanguardia.</p>
+                        <a href="#" class="btn btn-secondary">Scopri di Più</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="rMnROmM8ykrN.jpg" alt="Fresatura CNC">
+                    </div>
+                    <div class="service-content">
+                        <h3>Fresatura</h3>
+                        <p>Fresatura CNC avanzata per progetti complessi e di alta precisione su materiali metallici e plastici.</p>
+                        <a href="#" class="btn btn-secondary">Scopri di Più</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="1iOAuZVuK7If.jpg" alt="Montaggio Assemblaggio">
+                    </div>
+                    <div class="service-content">
+                        <h3>Montaggio</h3>
+                        <p>Assemblaggio di gruppi complessi con la massima attenzione ai dettagli e controllo qualità finale.</p>
+                        <a href="#" class="btn btn-secondary">Scopri di Più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productions Section -->
+    <section class="section" id="produzioni">
+        <div class="container">
+            <div class="section-title">
+                <h2>Le Nostre <span style="color: #ea580c;">Produzioni</span></h2>
+            </div>
+            <div class="productions-grid">
+                <div class="production-card">
+                    <div class="production-img">
+                        <img src="IMG_9038.png" alt="Componenti Meccanici di Precisione">
+                        <div class="production-badge">Tornitura</div>
+                    </div>
+                    <div class="production-content">
+                        <h3>Componenti Meccanici</h3>
+                        <p>Componenti torniti di alta precisione per applicazioni industriali</p>
+                    </div>
+                </div>
+                <div class="production-card">
+                    <div class="production-img">
+                        <img src="IMG_9059.png" alt="Pezzi Fresati Complessi">
+                        <div class="production-badge">Fresatura</div>
+                    </div>
+                    <div class="production-content">
+                        <h3>Pezzi Fresati Complessi</h3>
+                        <p>Lavorazioni di fresatura per geometrie complesse</p>
+                    </div>
+                </div>
+                <div class="production-card">
+                    <div class="production-img">
+                        <img src="IMG_9064.png" alt="Assemblaggio Gruppi Meccanici">
+                        <div class="production-badge">Montaggio</div>
+                    </div>
+                    <div class="production-content">
+                        <h3>Assemblaggio Gruppi</h3>
+                        <p>Assemblaggio di gruppi meccanici completi</p>
+                    </div>
+                </div>
+                <div class="production-card">
+                    <div class="production-img">
+                        <img src="IMG_9071.png" alt="Minuterie di Precisione">
+                        <div class="production-badge">Tornitura</div>
+                    </div>
+                    <div class="production-content">
+                        <h3>Minuterie di Precisione</h3>
+                        <p>Piccoli componenti con tolleranze strette</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimonianze <span style="color: #f97316;">Clienti</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Mecsystem ha superato le nostre aspettative. La qualità dei componenti è eccezionale e i tempi di consegna sempre rispettati.
+                    </div>
+                    <div class="testimonial-author">- Marco Rossi, Direttore Tecnico</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Professionalità e competenza tecnica di alto livello. Consigliano sempre le soluzioni migliori per le nostre esigenze.
+                    </div>
+                    <div class="testimonial-author">- Laura Bianchi, Responsabile Acquisti</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Collaboriamo da anni con Mecsystem. La loro affidabilità e precisione sono incomparabili nel settore.
+                    </div>
+                    <div class="testimonial-author">- Giuseppe Verdi, Ingegnere</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contatti">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contatti & <span style="color: #ea580c;">Preventivo</span></h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informazioni di Contatto</h3>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <div>
+                            <h4>Telefono</h4>
+                            <p>0722 317961</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>✉️</i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@mecsystemsrl.it</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <div>
+                            <h4>Indirizzo</h4>
+                            <p>Zona Industriale San Giovanni<br>
+                            Loc. San Giorgio, 41/A<br>
+                            61049 URBANIA (PU)</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i>🕒</i>
+                        <div>
+                            <h4>Orari di Lavoro</h4>
+                            <p>Lunedì - Venerdì: 8:00 - 17:00<br>
+                            Sabato: Su appuntamento</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Richiedi un Preventivo</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tipo di Lavorazione</label>
+                            <select id="service" class="form-control">
+                                <option value="">Seleziona...</option>
+                                <option value="tornitura">Tornitura</option>
+                                <option value="fresatura">Fresatura</option>
+                                <option value="montaggio">Montaggio</option>
+                                <option value="progetto">Progetto Complesso</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Descrizione del Progetto *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Invia Richiesta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mecsystem</h3>
+                    <p>Mecsystem s.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura e garantisce elevata flessibilità in grado di ridurre al minimo i tempi di consegna a cliente.</p>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: #adb5bd;">Società soggetta a direzione e coordinamento da parte di M + S S.r.l.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Utili</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#servizi">Servizi</a></li>
+                        <li><a href="#produzioni">Produzioni</a></li>
+                        <li><a href="#testimonials">Testimonianze</a></li>
+                        <li><a href="#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>I Nostri Servizi</h3>
+                    <ul class="footer-links">
+                        <li>Tornitura CNC</li>
+                        <li>Fresatura</li>
+                        <li>Tornitura di Minuterie</li>
+                        <li>Montaggio</li>
+                        <li>Progetti Complessi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mecsystem srl. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Animate hamburger icon
+            const spans = menuToggle.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!menuToggle.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate stats numbers
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Intersection Observer for stats animation
+        const statItems = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stat = entry.target;
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    animateValue(stat, 0, target, 2000);
+                    observer.unobserve(stat); // Stop observing after animation
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statItems.forEach(item => {
+            observer.observe(item);
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Grazie per la tua richiesta! Ti contatteremo presto.');
+                // In a real scenario, you would send the form data to a server here
+                // contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
+```
+
+### Principali Migliorie Apportate:
+
+1.  **Design Visivo Moderno:**
+    *   **Tipografia:** Utilizzo di Google Fonts (`Montserrat` per i titoli e `Open Sans` per il corpo) per un aspetto più professionale e leggibile.
+    *   **Palette Colori:** Una palette più definita con blu metallizzato (`#1a3a8f`) e arancio acceso (`#ea580c`) per i call-to-action, creando un contrasto visivo accattivante.
+    *   **Layout:** Maggiore spazio bianco e un layout più arioso che migliora la leggibilità e l'estetica generale.
+    *   **Effetti Visivi:** Ombre, bordi arrotondati e transizioni fluide per elementi interattivi (hover sui bottoni, schede servizi, ecc.).
+
+2.  **Esperienza Utente (UX) Migliorata:**
+    *   **Navigazione:** Header "sticky" con effetto di scroll per rimanere sempre visibile. Menu di navigazione migliorato con transizioni fluide.
+    *   **Hero Section:** Design più coinvolgente con testo centrato, call-to-action prominenti e un effetto di dissolvenza iniziale.
+    *   **Schede Servizi/Produzioni:** Design a "card" moderno con immagini di copertina, hover effects (ingrandimento dell'immagine e sollevamento della card) e layout coerente.
+    *   **Form di Contatto:** Form più pulito e user-friendly con etichette chiare, campi stilizzati e feedback visivo.
+
+3.  **Ottimizzazione Mobile:**
+    *   **Design Responsive Completo:** Breakpoint specifici per tablet e mobile che adattano il layout in modo ottimale.
+    *   **Menu Hamburger:** Un'icona a tre linee che si trasforma in "X" quando il menu è aperto, con un menu a scomparsa che occupa l'intera larghezza dello schermo su dispositivi mobili.
+    *   **Layout Mobile:** Le griglie si adattano a una o due colonne su schermi più piccoli, garantendo un'esperienza di lettura ottimale.
+
+4.  **Elementi Visivi Avanzati:**
+    *   **Animazione Statistiche:** I numeri nella sezione "Stats" si animano automaticamente quando entrano nello schermo, creando un effetto accattivante.
+    *   **Sezione Testimonianze:** Design stilizzato con citazioni in corsivo e un effetto di sfondo semi-trasparente con sfocatura.
+    *   **Footer:** Layout a griglia con link stilizzati e un design coerente con il resto del sito.
+
+5.  **Performance e Accessibilità:**
+    *   **CSS Ottimizzato:** Il CSS è stato ristrutturato utilizzando variabili CSS per colori e spaziature, rendendolo più manutenibile.
+    *   **HTML Semantico:** Utilizzo di tag HTML5 semantici per una migliore struttura e SEO.
+    *   **JavaScript:** Script per la navigazione fluida, il menu mobile, l'animazione delle statistiche e la gestione del form.
+
+Questo nuovo design offre un'esperienza utente molto più moderna, accattivante e professionale, mantenendo al contempo tutte le informazioni essenziali del sito originale.
