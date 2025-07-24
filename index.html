@@ -46,7 +46,7 @@
 
         /* Header */
         .header {
-            background: #1e40af;
+            background: linear-gradient(90deg, #fff 0%, #fff 15%, #1e40af 50%, #1e40af 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
@@ -66,12 +66,11 @@
         }
 
         .logo {
-            background: #2563eb;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
+    padding: 0;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 1.25rem;
+   }
 
         .nav {
             display: flex;
@@ -503,23 +502,92 @@
         #home.active {
             display: block;
         }
-    </style>
+    
+        /* Menu hamburger per mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .menu-toggle span {
+            height: 3px;
+            width: 26px;
+            background: white;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 900px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                gap: 0.7rem;
+            }
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100vw;
+                background: #1e40af;
+                flex-direction: column;
+                gap: 0;
+            }
+            .nav.show {
+                display: flex;
+            }
+            .nav a {
+                padding: 1rem 2rem;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                text-align: left;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .cta-button {
+                display: none;
+            }
+        }
+        .main-content {
+            margin-top: 80px;
+            padding-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                margin-top: 62px;
+            }
+        }
+
+</style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">Mecsystem</div>
-            <nav class="nav">
-                <a href="#" onclick="showSection('home')">Home</a>
-                <a href="#" onclick="showSection('servizi')">Servizi</a>
-                <a href="#" onclick="showSection('produzioni')">Produzioni</a>
-                <a href="#" onclick="showSection('certificazioni')">Certificazioni</a>
-                <a href="#" onclick="showSection('testimonianze')">Testimonianze</a>
-                <a href="#" onclick="showSection('blog')">Blog</a>
-                <a href="#" onclick="showSection('contatti')">Contatti</a>
+            <div class="logo" style="padding:0;">
+  <img src="Logo-mecsystem.png" alt="Mecsystem Logo" style="height:44px;max-width:160px;display:block;">
+</div>
+            <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav" id="main-nav">
+                <a href="#" onclick="showSection('home'); closeMenu()">Home</a>
+                <a href="#" onclick="showSection('servizi'); closeMenu()">Servizi</a>
+                <a href="#" onclick="showSection('produzioni'); closeMenu()">Produzioni</a>
+                <a href="#" onclick="showSection('certificazioni'); closeMenu()">Certificazioni</a>
+                <a href="#" onclick="showSection('testimonianze'); closeMenu()">Testimonianze</a>
+                <a href="#" onclick="showSection('blog'); closeMenu()">Blog</a>
+                <a href="#" onclick="showSection('contatti'); closeMenu()">Contatti</a>
             </nav>
-            <a href="#" onclick="showSection('contatti')" class="cta-button">Richiedi Preventivo</a>
+            <a href="#" onclick="showSection('contatti'); closeMenu()" class="cta-button">Richiedi Preventivo</a>
         </div>
     </header>
 
@@ -535,8 +603,8 @@
                             <h1>Lavorazioni<br>Meccaniche<br>di <span class="highlight">Precisione</span></h1>
                             <p>Mecsystem è specializzata nelle lavorazioni meccaniche di tornitura e fresatura, garantendo elevata flessibilità e tempi di consegna ottimizzati per ogni progetto.</p>
                             <div class="hero-buttons">
-                                <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri i Nostri Servizi</a>
-                                <a href="#" onclick="showSection('contatti')" class="btn-secondary">Richiedi Preventivo</a>
+                                <a href="#" onclick="showSection('servizi'); closeMenu()" class="btn-primary">Scopri i Nostri Servizi</a>
+                                <a href="#" onclick="showSection('contatti'); closeMenu()" class="btn-secondary">Richiedi Preventivo</a>
                             </div>
                         </div>
                         <div class="hero-image">
@@ -555,11 +623,11 @@
                             <div class="stat-label">Dipendenti</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">5300</div>
+                            <div class="stat-number">2953</div>
                             <div class="stat-label">Metri Quadrati</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">3</div>
+                            <div class="stat-number">2</div>
                             <div class="stat-label">Strutture</div>
                         </div>
                     </div>
@@ -579,7 +647,7 @@
                                 <li>Tempi di consegna ottimizzati</li>
                                 <li>Standard di qualità elevati</li>
                             </ul>
-                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri i Nostri Servizi</a>
+                            <a href="#" onclick="showSection('servizi'); closeMenu()" class="btn-primary">Scopri i Nostri Servizi</a>
                         </div>
                         <div class="about-image">
                             <img src="FzvepxjMAYMD.jpg" alt="Officina meccanica">
@@ -597,19 +665,19 @@
                             <img src="Ivtsq9jbtiZD.jpg" alt="Tornitura">
                             <h3>Tornitura</h3>
                             <p>Lavorazioni di tornitura di precisione per componenti di ogni dimensione</p>
-                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                            <a href="#" onclick="showSection('servizi'); closeMenu()" class="btn-primary">Scopri di Più</a>
                         </div>
                         <div class="service-card">
                             <img src="rMnROmM8ykrN.jpg" alt="Fresatura">
                             <h3>Fresatura</h3>
                             <p>Fresatura CNC avanzata per progetti complessi e di alta precisione</p>
-                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                            <a href="#" onclick="showSection('servizi'); closeMenu()" class="btn-primary">Scopri di Più</a>
                         </div>
                         <div class="service-card">
                             <img src="1iOAuZVuK7If.jpg" alt="Montaggio">
                             <h3>Montaggio</h3>
                             <p>Assemblaggio di gruppi complessi con la massima attenzione ai dettagli</p>
-                            <a href="#" onclick="showSection('servizi')" class="btn-primary">Scopri di Più</a>
+                            <a href="#" onclick="showSection('servizi'); closeMenu()" class="btn-primary">Scopri di Più</a>
                         </div>
                     </div>
                 </div>
@@ -805,7 +873,7 @@
                                 <li>Tracciabilità completa</li>
                                 <li>Test e verifiche costanti</li>
                             </ul>
-                            <a href="#" onclick="showSection('contatti')" class="btn-primary">Richiedi Informazioni</a>
+                            <a href="#" onclick="showSection('contatti'); closeMenu()" class="btn-primary">Richiedi Informazioni</a>
                         </div>
                         <div class="about-image">
                             <img src="usySg2lTSvRS.jpg" alt="Controllo qualità">
@@ -856,12 +924,12 @@
                         <div class="service-card">
                             <h3>★★★★★</h3>
                             <p>"Professionalità e competenza tecnica di alto livello. Consigliano sempre le soluzioni migliori per le nostre esigenze."</p>
-                            <strong>- Laura Bianchi, Responsabile Acquisti</strong>
+                            <strong>- Luca Garbugli, Responsabile Ufficio Tecnico</strong>
                         </div>
                         <div class="service-card">
                             <h3>★★★★★</h3>
                             <p>"Collaboriamo da anni con Mecsystem. La loro affidabilità e precisione sono incomparabili nel settore."</p>
-                            <strong>- Giuseppe Verdi, Ingegnere</strong>
+                            <strong>- Giuseppe Nardi, Ingegnere</strong>
                         </div>
                     </div>
                 </div>
@@ -1050,18 +1118,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="logo" style="margin-bottom: 1rem;">Mecsystem</div>
-                    <p>Mecsystem s.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura e garantisce elevata flessibilità in grado di ridurre al minimo i tempi di consegna a cliente.</p>
+                    <div class="logo" style="margin-bottom: 1rem;">MEC SYSTEM</div>
+                    <p>Mec System s.r.l. è specializzata nelle lavorazioni meccaniche di tornitura e fresatura e garantisce elevata flessibilità in grado di ridurre al minimo i tempi di consegna a cliente.</p>
                     <p style="font-size: 0.875rem; margin-top: 1rem;">Società soggetta a direzione e coordinamento da parte di M + S S.r.l.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Menu</h3>
                     <ul>
-                        <li><a href="#" onclick="showSection('home')">Home</a></li>
-                        <li><a href="#" onclick="showSection('servizi')">Servizi</a></li>
-                        <li><a href="#" onclick="showSection('produzioni')">Produzioni</a></li>
-                        <li><a href="#" onclick="showSection('certificazioni')">Certificazioni</a></li>
-                        <li><a href="#" onclick="showSection('contatti')">Contatti</a></li>
+                        <li><a href="#" onclick="showSection('home'); closeMenu()">Home</a></li>
+                        <li><a href="#" onclick="showSection('servizi'); closeMenu()">Servizi</a></li>
+                        <li><a href="#" onclick="showSection('produzioni'); closeMenu()">Produzioni</a></li>
+                        <li><a href="#" onclick="showSection('certificazioni'); closeMenu()">Certificazioni</a></li>
+                        <li><a href="#" onclick="showSection('contatti'); closeMenu()">Contatti</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1114,9 +1182,26 @@
 
         // Initialize with home section
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('home');
+            showSection('home'); closeMenu();
         });
     </script>
+
+<script>
+function toggleMenu() {
+    var nav = document.getElementById('main-nav');
+    nav.classList.toggle('show');
+}
+function closeMenu() {
+    var nav = document.getElementById('main-nav');
+    nav.classList.remove('show');
+}
+// Chiudi il menu se si fa resize in orizzontale
+window.addEventListener('resize', function() {
+    if(window.innerWidth > 768) {
+        closeMenu();
+    }
+});
+</script>
+
 </body>
 </html>
-
